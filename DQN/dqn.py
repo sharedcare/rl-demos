@@ -231,8 +231,8 @@ if __name__ == "__main__":
     parser.add_argument("--n_episodes", default=20000, type=int, help="number of episodes")
     parser.add_argument("--n_test_episodes", default=10, type=int, help="number of test episodes")
     parser.add_argument("--model_save_path", default="./saved_models", help="model save path")
-    parser.add_argument("--render", default=True, action="store_true", help="render")
-    parser.add_argument("--test", default=True,
+    parser.add_argument("--render", default=False, action="store_true", help="render")
+    parser.add_argument("--test", default=False,
                         action="store_true", help="test")
     parser.add_argument("--load_model", default=False, action="store_false", help="whether to load trained model")
     args = parser.parse_args()

@@ -14,13 +14,11 @@ cv2.ocl.setUseOpenCL(False)
 
 
 class RewardScaler(gym.RewardWrapper):
-
     def reward(self, reward):
         return reward * 0.1
 
 
 class ClipRewardEnv(gym.RewardWrapper):
-
     def __init__(self, env):
         gym.RewardWrapper.__init__(self, env)
 
@@ -30,7 +28,6 @@ class ClipRewardEnv(gym.RewardWrapper):
 
 
 class LazyFrames(object):
-
     def __init__(self, frames):
         """This object ensures that common frames between the observations are only stored once.
         It exists purely to optimize memory usage which can be huge for DQN's 1M frames replay
@@ -60,7 +57,6 @@ class LazyFrames(object):
 
 
 class FrameStack(gym.Wrapper):
-
     def __init__(self, env, k):
         """Stack k last frames.
         Returns lazy array, which is much more memory efficient.
@@ -95,7 +91,6 @@ class FrameStack(gym.Wrapper):
 
 
 class WarpFrame(gym.ObservationWrapper):
-
     def __init__(self, env):
         """Warp frames to 84x84 as done in the Nature paper and later work."""
         gym.ObservationWrapper.__init__(self, env)
@@ -115,7 +110,6 @@ class WarpFrame(gym.ObservationWrapper):
 
 
 class FireResetEnv(gym.Wrapper):
-
     def __init__(self, env=None):
         """For environments where the user need to press FIRE for the game to start."""
         super(FireResetEnv, self).__init__(env)
@@ -137,7 +131,6 @@ class FireResetEnv(gym.Wrapper):
 
 
 class EpisodicLifeEnv(gym.Wrapper):
-
     def __init__(self, env=None):
         """Make end-of-life == end-of-episode, but only reset on true game over.
         Done by DeepMind for the DQN and co. since it helps value estimation.
@@ -178,7 +171,6 @@ class EpisodicLifeEnv(gym.Wrapper):
 
 
 class MaxAndSkipEnv(gym.Wrapper):
-
     def __init__(self, env=None, skip=4):
         """Return only every `skip`-th frame"""
         super(MaxAndSkipEnv, self).__init__(env)
@@ -209,7 +201,6 @@ class MaxAndSkipEnv(gym.Wrapper):
 
 
 class NoopResetEnv(gym.Wrapper):
-
     def __init__(self, env=None, noop_max=30):
         """Sample initial states by taking random number of no-ops on reset.
         No-op is assumed to be action 0.
